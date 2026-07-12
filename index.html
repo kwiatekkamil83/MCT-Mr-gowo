@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCT Mrągowo — Zapisy na zajęcia online</title>
+<meta name="description" content="MCT Mrągowo — treningi grupowe (kettlebell, fitness, zdrowy kręgosłup, ninja kids), trening personalny, gabinet terapeutyczny oraz wynajem sali. Zapisz się online.">
+<style>
+  :root{
+    --bg:#0E2A2B;
+    --bg-alt:#123B3C;
+    --card:#154547;
+    --text:#F3F6F5;
+    --text-dim:#B9CBC9;
+    --accent:#E8804A;
+    --accent-dark:#C9642F;
+    --accent-2:#4FB6A6;
+    --line:#24595B;
+    --radius:14px;
+    --shadow:0 8px 24px rgba(0,0,0,.25);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--text);line-height:1.55;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+  header.site{position:sticky;top:0;z-index:50;background:rgba(14,42,43,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{font-weight:800;font-size:1.25rem;letter-spacing:.02em;}
+  .brand span{color:var(--accent);}
+  nav.links{display:flex;gap:22px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:var(--text-dim);transition:color .15s;}
+  nav.links a:hover{color:var(--text);}
+  .btn{display:inline-block;border:none;border-radius:999px;padding:12px 26px;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;transition:transform .12s,background .15s;}
+  .btn-primary{background:var(--accent);color:#1a1a1a;}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--accent-2);}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+  .btn-block{display:block;width:100%;}
+
+  .hero{padding:76px 0 60px;text-align:center;background:
+    radial-gradient(circle at 15% 20%, rgba(79,182,166,.16), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(232,128,74,.14), transparent 40%);}
+  .hero h1{font-size:clamp(2rem,4.4vw,3rem);margin:0 0 16px;font-weight:800;}
+  .hero p{color:var(--text-dim);max-width:640px;margin:0 auto 30px;font-size:1.08rem;}
+  .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  section{padding:64px 0;}
+  section.alt{background:var(--bg-alt);}
+  h2.section-title{font-size:1.8rem;margin:0 0 8px;text-align:center;}
+  p.section-sub{color:var(--text-dim);text-align:center;max-width:600px;margin:0 auto 36px;}
+
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr);} .grid-2{grid-template-columns:1fr;}}
+  @media(max-width:560px){.grid-4{grid-template-columns:1fr;}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);}
+  .card .icon{font-size:1.8rem;margin-bottom:10px;}
+  .card h3{margin:0 0 8px;font-size:1.15rem;}
+  .card p{color:var(--text-dim);font-size:.92rem;margin:0 0 10px;}
+  .card ul{margin:0;padding-left:18px;color:var(--text-dim);font-size:.9rem;}
+  .card ul li{margin-bottom:4px;}
+  .tag{display:inline-block;background:rgba(79,182,166,.15);color:var(--accent-2);border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:10px;}
+
+  table.schedule{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--card);border-radius:var(--radius);overflow:hidden;}
+  table.schedule th,table.schedule td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;}
+  table.schedule th{background:rgba(255,255,255,.04);color:var(--text-dim);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;}
+  table.schedule tr:last-child td{border-bottom:none;}
+  .schedule-wrap{overflow-x:auto;}
+  #schedule-status{text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:12px;}
+
+  .booking{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);}
+  .steps{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+  .step-pill{flex:1;min-width:120px;text-align:center;padding:9px 8px;border-radius:999px;background:rgba(255,255,255,.04);color:var(--text-dim);font-size:.78rem;font-weight:700;border:1px solid var(--line);}
+  .step-pill.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent);}
+  .step-pill.done{background:rgba(79,182,166,.18);color:var(--accent-2);border-color:var(--accent-2);}
+
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media(max-width:700px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
+  .cat-btn{background:rgba(255,255,255,.03);border:1.5px solid var(--line);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;color:var(--text);font-size:.92rem;font-weight:700;transition:.15s;}
+  .cat-btn:hover{border-color:var(--accent-2);}
+  .cat-btn.selected{border-color:var(--accent);background:rgba(232,128,74,.12);}
+  .cat-btn .emoji{font-size:1.6rem;display:block;margin-bottom:6px;}
+
+  label.field-label{display:block;font-size:.82rem;color:var(--text-dim);margin:16px 0 6px;font-weight:700;}
+  input[type=date],input[type=text],input[type=tel],input[type=email],textarea{
+    width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--line);
+    background:rgba(255,255,255,.03);color:var(--text);font-size:.95rem;font-family:inherit;
+  }
+  textarea{resize:vertical;min-height:70px;}
+  input::placeholder,textarea::placeholder{color:#7f9c99;}
+
+  .slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:6px;}
+  .slot-btn{background:rgba(255,255,255,.03);border:1.5px solid var(--line);border-radius:10px;padding:12px 10px;cursor:pointer;color:var(--text);font-size:.85rem;text-align:center;transition:.15s;}
+  .slot-btn:hover{border-color:var(--accent-2);}
+  .slot-btn.selected{border-color:var(--accent);background:rgba(232,128,74,.15);}
+  .slot-btn.full{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
+  .slot-btn small{display:block;color:var(--text-dim);margin-top:3px;}
+
+  .empty-msg{color:var(--text-dim);font-size:.9rem;padding:18px 0;text-align:center;}
+  .honeypot{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;}
+
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:26px;gap:10px;}
+  .msg-box{margin-top:18px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;}
+  .msg-box.ok{background:rgba(79,182,166,.15);border:1px solid var(--accent-2);color:#CFEFE9;display:block;}
+  .msg-box.err{background:rgba(232,90,90,.15);border:1px solid #E85A5A;color:#FBD5D5;display:block;}
+
+  footer{padding:44px 0;text-align:center;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--line);}
+  footer .foot-links{margin-top:10px;}
+  footer a{text-decoration:none;color:var(--accent-2);}
+
+  .price-note{font-size:.82rem;color:var(--accent-2);margin-top:8px;}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.25);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="brand">MCT <span>Mrągowo</span></div>
+    <nav class="links">
+      <a href="#oferta">Oferta</a>
+      <a href="#grafik">Grafik</a>
+      <a href="#rezerwacja">Zapisy</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a href="#rezerwacja" class="btn btn-primary" style="padding:9px 20px;font-size:.85rem;">Zapisz się</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Trenuj mądrze.<br>Zapisz się w minutę.</h1>
+    <p>Zajęcia grupowe, trening personalny i gabinet terapeutyczny w jednym miejscu w Mrągowie.
+       Wybierz termin online — bez telefonów i czekania na odpowiedź.</p>
+    <div class="cta">
+      <a href="#rezerwacja" class="btn btn-primary">Umów termin online</a>
+      <a href="#oferta" class="btn btn-outline">Zobacz ofertę</a>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <h2 class="section-title">Oferta MCT</h2>
+    <p class="section-sub">Cztery filary — jeden system zapisów.</p>
+    <div class="grid-4">
+      <div class="card">
+        <div class="icon">🏋️</div>
+        <h3>Zajęcia grupowe</h3>
+        <p>Trening w grupie, w stałych terminach tygodnia.</p>
+        <ul>
+          <li>Kettlebell</li>
+          <li>Fitness</li>
+          <li>Zdrowy kręgosłup</li>
+          <li>Ninja Kids (dzieci)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Trening personalny</h3>
+        <p>Indywidualna praca nad techniką i motoryką pod okiem trenera.</p>
+        <ul>
+          <li>Trening motoryczny 1:1</li>
+          <li>Plan dopasowany do celu</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🧘</div>
+        <h3>Gabinet terapeutyczny</h3>
+        <p>Praca z ciałem łącząca narzędzia terapeutyczne i ćwiczenia.</p>
+        <ul>
+          <li>Terapia indywidualna</li>
+          <li>Diagnostyka i praca z ciałem</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🔑</div>
+        <h3>Wynajem sali</h3>
+        <p>Wolne godziny sali/gabinetu do wynajęcia — automatycznie widoczne w grafiku.</p>
+        <ul>
+          <li>Dla trenerów i terapeutów</li>
+          <li>Rozliczenie godzinowe</li>
+        </ul>
+        <div class="price-note">Cennik i szczegóły — zapytaj przy rezerwacji.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="grafik" class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Grafik zajęć grupowych</h2>
+    <p class="section-sub">Aktualny tygodniowy harmonogram, pobierany bezpośrednio z systemu.</p>
+    <div class="schedule-wrap">
+      <table class="schedule" id="schedule-table">
+        <thead><tr><th>Dzień</th><th>Godzina</th><th>Zajęcia</th><th>Prowadzi</th><th>Miejsca</th></tr></thead>
+        <tbody id="schedule-body">
+          <tr><td colspan="5" class="empty-msg">Wczytywanie grafiku…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="schedule-status"></div>
+  </div>
+</section>
+
+<section id="rezerwacja">
+  <div class="wrap">
+    <h2 class="section-title">Zapisz się online</h2>
+    <p class="section-sub">4 kroki: rodzaj zajęć → data → godzina → dane kontaktowe.</p>
+
+    <div class="booking">
+      <div class="steps">
+        <div class="step-pill active" data-step="1">1. Rodzaj</div>
+        <div class="step-pill" data-step="2">2. Data</div>
+        <div class="step-pill" data-step="3">3. Godzina</div>
+        <div class="step-pill" data-step="4">4. Dane</div>
+      </div>
+
+      <!-- KROK 1: rodzaj -->
+      <div class="step-panel" id="panel-1">
+        <div class="cat-grid">
+          <div class="cat-btn" data-type="Grupowe"><span class="emoji">🏋️</span>Zajęcia grupowe</div>
+          <div class="cat-btn" data-type="Personalny"><span class="emoji">🎯</span>Trening personalny</div>
+          <div class="cat-btn" data-type="Gabinet"><span class="emoji">🧘</span>Gabinet terapeutyczny</div>
+          <div class="cat-btn" data-type="Wynajem"><span class="emoji">🔑</span>Wynajem sali</div>
+        </div>
+      </div>
+
+      <!-- KROK 2: data -->
+      <div class="step-panel" id="panel-2" style="display:none;">
+        <label class="field-label" for="date-input">Wybierz datę</label>
+        <input type="date" id="date-input">
+      </div>
+
+      <!-- KROK 3: godzina -->
+      <div class="step-panel" id="panel-3" style="display:none;">
+        <div id="slots-container" class="slots-grid"></div>
+      </div>
+
+      <!-- KROK 4: dane kontaktowe -->
+      <div class="step-panel" id="panel-4" style="display:none;">
+        <div id="summary-box" style="color:var(--accent-2);font-weight:700;margin-bottom:6px;"></div>
+        <label class="field-label" for="f-imie">Imię i nazwisko *</label>
+        <input type="text" id="f-imie" placeholder="Jan Kowalski">
+        <label class="field-label" for="f-tel">Telefon *</label>
+        <input type="tel" id="f-tel" placeholder="600 000 000">
+        <label class="field-label" for="f-email">E-mail (opcjonalnie, dostaniesz potwierdzenie)</label>
+        <input type="email" id="f-email" placeholder="jan@przyklad.pl">
+        <label class="field-label" for="f-uwagi">Uwagi</label>
+        <textarea id="f-uwagi" placeholder="Np. cel wynajmu sali, informacje dla trenera..."></textarea>
+        <label style="display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-size:.82rem;color:var(--text-dim);cursor:pointer;">
+          <input type="checkbox" id="f-zgoda" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;">
+          <span>Wyrażam zgodę na przetwarzanie moich danych osobowych (imię, telefon, e-mail) przez MCT Mrągowo w celu obsługi tej rezerwacji, zgodnie z RODO. Dane nie są przekazywane podmiotom trzecim. *</span>
+        </label>
+        <input type="text" id="f-website" class="honeypot" tabindex="-1" autocomplete="off">
+        <div class="msg-box" id="result-msg"></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-outline" id="btn-back" style="visibility:hidden;">Wstecz</button>
+        <button class="btn btn-primary" id="btn-next" disabled>Dalej</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="kontakt">
+  <div class="wrap">
+    <div><strong>MCT Mrągowo</strong> — treningi grupowe, personalne i gabinet terapeutyczny.</div>
+    <div class="foot-links">
+      Tel: <a href="tel:+48000000000">uzupełnij numer</a> ·
+      E-mail: <a href="mailto:kontakt@mct-mragowo.pl">uzupełnij e-mail</a>
+    </div>
+    <div style="margin-top:14px;opacity:.6;">System zapisów działa na Google Sheets + Apps Script.</div>
+  </div>
+</footer>
+
+<script>
+/* ======================================================================
+   KONFIGURACJA — TU WKLEJ SWÓJ ADRES WEB APP Z GOOGLE APPS SCRIPT
+   Instrukcja: patrz plik "Instrukcja-wdrozenia-MCT.docx", krok 4.
+   ====================================================================== */
+const CONFIG = {
+  API_URL: https://script.google.com/macros/s/AKfycbwTNgmww1pDvYPGWoFr8ZPKHiRhQe6MyP6vtg-4L1fJ-k5tDNRMWSrYMJyq3WO4fQ/exec
+  MAX_DAYS_AHEAD: 21,
+};
+
+const TYPE_LABELS = { Grupowe: 'Zajęcia grupowe', Personalny: 'Trening personalny', Gabinet: 'Gabinet terapeutyczny', Wynajem: 'Wynajem sali' };
+
+let state = { step: 1, type: null, date: null, slot: null };
+
+// ---------- Nawigacja kroków ----------
+const stepPills = document.querySelectorAll('.step-pill');
+const panels = document.querySelectorAll('.step-panel');
+const btnNext = document.getElementById('btn-next');
+const btnBack = document.getElementById('btn-back');
+
+function renderStep() {
+  panels.forEach(p => p.style.display = 'none');
+  document.getElementById('panel-' + state.step).style.display = 'block';
+  stepPills.forEach(pill => {
+    const s = Number(pill.dataset.step);
+    pill.classList.toggle('active', s === state.step);
+    pill.classList.toggle('done', s < state.step);
+  });
+  btnBack.style.visibility = state.step === 1 ? 'hidden' : 'visible';
+  btnNext.textContent = state.step === 4 ? 'Wyślij zgłoszenie' : 'Dalej';
+  updateNextEnabled();
+}
+
+function updateNextEnabled() {
+  if (state.step === 1) btnNext.disabled = !state.type;
+  else if (state.step === 2) btnNext.disabled = !state.date;
+  else if (state.step === 3) btnNext.disabled = !state.slot;
+  else btnNext.disabled = false;
+}
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    state.type = btn.dataset.type;
+    updateNextEnabled();
+  });
+});
+
+const dateInput = document.getElementById('date-input');
+(function initDateBounds(){
+  const today = new Date();
+  const max = new Date();
+  max.setDate(max.getDate() + CONFIG.MAX_DAYS_AHEAD);
+  dateInput.min = today.toISOString().slice(0,10);
+  dateInput.max = max.toISOString().slice(0,10);
+})();
+dateInput.addEventListener('change', () => {
+  state.date = dateInput.value;
+  updateNextEnabled();
+});
+
+btnBack.addEventListener('click', () => {
+  if (state.step > 1) { state.step--; renderStep(); }
+});
+
+btnNext.addEventListener('click', async () => {
+  if (state.step === 2) {
+    await loadSlots();
+  }
+  if (state.step === 4) {
+    await submitBooking();
+    return;
+  }
+  if (state.step < 4) { state.step++; renderStep(); }
+});
+
+// ---------- Krok 3: sloty ----------
+async function loadSlots() {
+  const container = document.getElementById('slots-container');
+  container.innerHTML = '<div class="empty-msg"><span class="spinner"></span>Sprawdzanie wolnych terminów…</div>';
+  state.slot = null;
+  try {
+    const url = CONFIG.API_URL + '?action=slots&type=' + encodeURIComponent(state.type) + '&date=' + encodeURIComponent(state.date);
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message || 'Błąd pobierania terminów');
+    renderSlots(data.slots || []);
+  } catch (err) {
+    container.innerHTML = '<div class="empty-msg">Nie udało się pobrać terminów. Sprawdź połączenie lub spróbuj później.<br><small>(' + escapeHtml(err.message) + ')</small></div>';
+  }
+}
+
+function renderSlots(slots) {
+  const container = document.getElementById('slots-container');
+  container.innerHTML = '';
+  if (!slots.length) {
+    container.innerHTML = '<div class="empty-msg">Brak wolnych terminów tego dnia. Wybierz inną datę.</div>';
+    return;
+  }
+  slots.forEach(s => {
+    const div = document.createElement('div');
+    const isGroup = state.type === 'Grupowe';
+    const full = isGroup && s.wolneMiejsca <= 0;
+    div.className = 'slot-btn' + (full ? ' full' : '');
+    div.innerHTML = isGroup
+      ? (s.name + '<small>' + s.start + '–' + s.end + ' · ' + (full ? 'brak miejsc' : s.wolneMiejsca + ' wolnych miejsc') + '</small>')
+      : (s.start + '–' + s.end + (s.osoba ? '<small>' + s.osoba + '</small>' : ''));
+    if (!full) {
+      div.addEventListener('click', () => {
+        document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+        div.classList.add('selected');
+        state.slot = s;
+        updateNextEnabled();
+      });
+    }
+    container.appendChild(div);
+  });
+}
+
+// ---------- Krok 4: wysyłka ----------
+function goToStep4Summary() {
+  const s = state.slot;
+  const label = TYPE_LABELS[state.type];
+  const what = state.type === 'Grupowe' ? s.name : label;
+  document.getElementById('summary-box').textContent =
+    what + ' — ' + state.date + ', ' + s.start + '–' + s.end;
+}
+
+async function submitBooking() {
+  const imie = document.getElementById('f-imie').value.trim();
+  const tel = document.getElementById('f-tel').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const uwagi = document.getElementById('f-uwagi').value.trim();
+  const website = document.getElementById('f-website').value; // honeypot
+  const zgoda = document.getElementById('f-zgoda').checked;
+  const msgBox = document.getElementById('result-msg');
+
+  if (!imie || !tel) {
+    msgBox.className = 'msg-box err';
+    msgBox.textContent = 'Uzupełnij imię, nazwisko i numer telefonu.';
+    return;
+  }
+  if (!zgoda) {
+    msgBox.className = 'msg-box err';
+    msgBox.textContent = 'Zaznacz zgodę na przetwarzanie danych osobowych, aby wysłać rezerwację.';
+    return;
+  }
+
+  btnNext.disabled = true;
+  btnNext.innerHTML = '<span class="spinner"></span>Wysyłanie…';
+
+  const payload = {
+    type: state.type,
+    date: state.date,
+    start: state.slot.start,
+    end: state.slot.end,
+    name: state.type === 'Grupowe' ? state.slot.name : undefined,
+    imie, telefon: tel, email, uwagi, website,
+  };
+
+  try {
+    const res = await fetch(CONFIG.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // unika CORS preflight dla Apps Script
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (data.success) {
+      msgBox.className = 'msg-box ok';
+      msgBox.textContent = '✅ ' + data.message;
+      btnNext.style.display = 'none';
+      btnBack.style.display = 'none';
+    } else {
+      msgBox.className = 'msg-box err';
+      msgBox.textContent = '❌ ' + data.message;
+      btnNext.disabled = false;
+      btnNext.textContent = 'Wyślij zgłoszenie';
+    }
+  } catch (err) {
+    msgBox.className = 'msg-box err';
+    msgBox.textContent = '❌ Błąd połączenia. Spróbuj ponownie lub zadzwoń.';
+    btnNext.disabled = false;
+    btnNext.textContent = 'Wyślij zgłoszenie';
+  }
+}
+
+const origRenderStep = renderStep;
+renderStep = function() {
+  origRenderStep();
+  if (state.step === 4 && state.slot) goToStep4Summary();
+};
+
+// ---------- Tabela grafiku (sekcja "Grafik") ----------
+async function loadWeekOverview() {
+  const statusEl = document.getElementById('schedule-status');
+  const body = document.getElementById('schedule-body');
+  try {
+    const res = await fetch(CONFIG.API_URL + '?action=week_overview');
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message);
+    const order = ['Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'];
+    const rows = (data.grupowe || []).slice().sort((a,b) => {
+      const da = order.indexOf(a.Dzien_tygodnia), db = order.indexOf(b.Dzien_tygodnia);
+      if (da !== db) return da - db;
+      return String(a.Godzina_start).localeCompare(String(b.Godzina_start));
+    });
+    if (!rows.length) {
+      body.innerHTML = '<tr><td colspan="5" class="empty-msg">Grafik zostanie uzupełniony wkrótce.</td></tr>';
+      return;
+    }
+    body.innerHTML = rows.map(r =>
+      '<tr><td>' + r.Dzien_tygodnia + '</td><td>' + r.Godzina_start + '–' + r.Godzina_koniec + '</td><td>' + r.Nazwa_zajec + '</td><td>' + (r.Trener||'') + '</td><td>' + (r.Limit_miejsc||'') + ' os.</td></tr>'
+    ).join('');
+  } catch (err) {
+    body.innerHTML = '<tr><td colspan="5" class="empty-msg">Grafik pojawi się po skonfigurowaniu systemu (patrz instrukcja wdrożenia).</td></tr>';
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ---------- Start ----------
+renderStep();
+loadWeekOverview();
+</script>
+</body>
+</html>
