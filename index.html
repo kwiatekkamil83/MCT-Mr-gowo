@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCT Mrągowo — Zapisy na zajęcia online</title>
-<meta name="description" content="MCT Mrągowo — treningi grupowe (kettlebell, fitness, zdrowy kręgosłup, ninja kids), trening personalny, gabinet terapeutyczny oraz wynajem sali. Zapisz się online.">
+<meta name="description" content="MCT Mrągowo — treninki grupowe (kettlebell, fitness, zdrowy kręgosłup, ninja kids), trening personalny, gabinet terapeutyczny oraz wynajem sali. Zapisz się online.">
 <style>
   :root{
     --bg:#0E2A2B;
@@ -40,24 +40,20 @@
   .btn-outline:hover{border-color:var(--accent-2);}
   .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
   .btn-block{display:block;width:100%;}
-
   .hero{padding:76px 0 60px;text-align:center;background:
     radial-gradient(circle at 15% 20%, rgba(79,182,166,.16), transparent 45%),
     radial-gradient(circle at 85% 15%, rgba(232,128,74,.14), transparent 40%);}
   .hero h1{font-size:clamp(2rem,4.4vw,3rem);margin:0 0 16px;font-weight:800;}
   .hero p{color:var(--text-dim);max-width:640px;margin:0 auto 30px;font-size:1.08rem;}
   .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-
   section{padding:64px 0;}
   section.alt{background:var(--bg-alt);}
   h2.section-title{font-size:1.8rem;margin:0 0 8px;text-align:center;}
   p.section-sub{color:var(--text-dim);text-align:center;max-width:600px;margin:0 auto 36px;}
-
   .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
   @media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr);} .grid-2{grid-template-columns:1fr;}}
   @media(max-width:560px){.grid-4{grid-template-columns:1fr;}}
-
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);}
   .card .icon{font-size:1.8rem;margin-bottom:10px;}
   .card h3{margin:0 0 8px;font-size:1.15rem;}
@@ -65,27 +61,23 @@
   .card ul{margin:0;padding-left:18px;color:var(--text-dim);font-size:.9rem;}
   .card ul li{margin-bottom:4px;}
   .tag{display:inline-block;background:rgba(79,182,166,.15);color:var(--accent-2);border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:10px;}
-
   table.schedule{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--card);border-radius:var(--radius);overflow:hidden;}
   table.schedule th,table.schedule td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;}
   table.schedule th{background:rgba(255,255,255,.04);color:var(--text-dim);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;}
   table.schedule tr:last-child td{border-bottom:none;}
   .schedule-wrap{overflow-x:auto;}
   #schedule-status{text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:12px;}
-
   .booking{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);}
   .steps{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
   .step-pill{flex:1;min-width:120px;text-align:center;padding:9px 8px;border-radius:999px;background:rgba(255,255,255,.04);color:var(--text-dim);font-size:.78rem;font-weight:700;border:1px solid var(--line);}
   .step-pill.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent);}
   .step-pill.done{background:rgba(79,182,166,.18);color:var(--accent-2);border-color:var(--accent-2);}
-
   .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
   @media(max-width:700px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
   .cat-btn{background:rgba(255,255,255,.03);border:1.5px solid var(--line);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;color:var(--text);font-size:.92rem;font-weight:700;transition:.15s;}
   .cat-btn:hover{border-color:var(--accent-2);}
   .cat-btn.selected{border-color:var(--accent);background:rgba(232,128,74,.12);}
   .cat-btn .emoji{font-size:1.6rem;display:block;margin-bottom:6px;}
-
   label.field-label{display:block;font-size:.82rem;color:var(--text-dim);margin:16px 0 6px;font-weight:700;}
   input[type=date],input[type=text],input[type=tel],input[type=email],textarea{
     width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--line);
@@ -93,26 +85,21 @@
   }
   textarea{resize:vertical;min-height:70px;}
   input::placeholder,textarea::placeholder{color:#7f9c99;}
-
   .slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:6px;}
   .slot-btn{background:rgba(255,255,255,.03);border:1.5px solid var(--line);border-radius:10px;padding:12px 10px;cursor:pointer;color:var(--text);font-size:.85rem;text-align:center;transition:.15s;}
   .slot-btn:hover{border-color:var(--accent-2);}
   .slot-btn.selected{border-color:var(--accent);background:rgba(232,128,74,.15);}
   .slot-btn.full{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
   .slot-btn small{display:block;color:var(--text-dim);margin-top:3px;}
-
   .empty-msg{color:var(--text-dim);font-size:.9rem;padding:18px 0;text-align:center;}
   .honeypot{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;}
-
   .nav-buttons{display:flex;justify-content:space-between;margin-top:26px;gap:10px;}
   .msg-box{margin-top:18px;padding:14px 16px;border-radius:10px;font-size:.9rem;display:none;}
   .msg-box.ok{background:rgba(79,182,166,.15);border:1px solid var(--accent-2);color:#CFEFE9;display:block;}
   .msg-box.err{background:rgba(232,90,90,.15);border:1px solid #E85A5A;color:#FBD5D5;display:block;}
-
   footer{padding:44px 0;text-align:center;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--line);}
   footer .foot-links{margin-top:10px;}
   footer a{text-decoration:none;color:var(--accent-2);}
-
   .price-note{font-size:.82rem;color:var(--accent-2);margin-top:8px;}
   .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.25);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px;}
   @keyframes spin{to{transform:rotate(360deg);}}
@@ -222,7 +209,6 @@
         <div class="step-pill" data-step="4">4. Dane</div>
       </div>
 
-      <!-- KROK 1: rodzaj -->
       <div class="step-panel" id="panel-1">
         <div class="cat-grid">
           <div class="cat-btn" data-type="Grupowe"><span class="emoji">🏋️</span>Zajęcia grupowe</div>
@@ -232,18 +218,15 @@
         </div>
       </div>
 
-      <!-- KROK 2: data -->
       <div class="step-panel" id="panel-2" style="display:none;">
         <label class="field-label" for="date-input">Wybierz datę</label>
         <input type="date" id="date-input">
       </div>
 
-      <!-- KROK 3: godzina -->
       <div class="step-panel" id="panel-3" style="display:none;">
         <div id="slots-container" class="slots-grid"></div>
       </div>
 
-      <!-- KROK 4: dane kontaktowe -->
       <div class="step-panel" id="panel-4" style="display:none;">
         <div id="summary-box" style="color:var(--accent-2);font-weight:700;margin-bottom:6px;"></div>
         <label class="field-label" for="f-imie">Imię i nazwisko *</label>
@@ -272,30 +255,34 @@
 
 <footer id="kontakt">
   <div class="wrap">
-    <div><strong>MCT Mrągowo</strong> — treningi grupowe, personalne i gabinet terapeutyczny.</div>
+    <div><strong>MCT Mrągowo</strong> — treninki grupowe, personalne i gabinet terapeutyczny.</div>
     <div class="foot-links">
-      Tel: <a href="tel:+48000000000">uzupełnij numer</a> ·
-      E-mail: <a href="mailto:kontakt@mct-mragowo.pl">uzupełnij e-mail</a>
+      Tel: <a href="tel:+48000000000">uzupełnij numer</a> | E-mail: <a href="mailto:kontakt@mct-mragowo.pl">uzupełnij e-mail</a>
     </div>
-    <div style="margin-top:14px;opacity:.6;">System zapisów działa na Google Sheets + Apps Script.</div>
+    <div style="margin-top:14px;opacity:.6;">System zapisów działa na Google Sheets i Google Apps Script.</div>
   </div>
 </footer>
 
 <script>
-/* ======================================================================
-   KONFIGURACJA — TU WKLEJ SWÓJ ADRES WEB APP Z GOOGLE APPS SCRIPT
-   Instrukcja: patrz plik "Instrukcja-wdrozenia-MCT.docx", krok 4.
-   ====================================================================== */
 const CONFIG = {
-  API_URL: https://script.google.com/macros/s/AKfycbyzIEea5jIZfPnZl6apfJswR202ny_vVlppZFJSx4HHsJwIPjG472lcNQ69UHG8tYum/exec
-  MAX_DAYS_AHEAD: 21,
+  API_URL: 'https://script.google.com/macros/s/AKfycbyzIEea5jIZfPnZI6apfJswR202ny_vVIppZFJSx4HHsJwIPjG472lcNQ69UHG8tYum/exec',
+  MAX_DAYS_AHEAD: 21
 };
 
-const TYPE_LABELS = { Grupowe: 'Zajęcia grupowe', Personalny: 'Trening personalny', Gabinet: 'Gabinet terapeutyczny', Wynajem: 'Wynajem sali' };
+const TYPE_LABELS = {
+  Grupowe: 'Zajęcia grupowe',
+  Personalny: 'Trening personalny',
+  Gabinet: 'Gabinet terapeutyczny',
+  Wynajem: 'Wynajem sali'
+};
 
-let state = { step: 1, type: null, date: null, slot: null };
+let state = {
+  step: 1,
+  type: null,
+  date: null,
+  slot: null
+};
 
-// ---------- Nawigacja kroków ----------
 const stepPills = document.querySelectorAll('.step-pill');
 const panels = document.querySelectorAll('.step-panel');
 const btnNext = document.getElementById('btn-next');
@@ -331,20 +318,24 @@ document.querySelectorAll('.cat-btn').forEach(btn => {
 });
 
 const dateInput = document.getElementById('date-input');
-(function initDateBounds(){
+(function initDateBounds() {
   const today = new Date();
   const max = new Date();
   max.setDate(max.getDate() + CONFIG.MAX_DAYS_AHEAD);
-  dateInput.min = today.toISOString().slice(0,10);
-  dateInput.max = max.toISOString().slice(0,10);
+  dateInput.min = today.toISOString().slice(0, 10);
+  dateInput.max = max.toISOString().slice(0, 10);
 })();
+
 dateInput.addEventListener('change', () => {
   state.date = dateInput.value;
   updateNextEnabled();
 });
 
 btnBack.addEventListener('click', () => {
-  if (state.step > 1) { state.step--; renderStep(); }
+  if (state.step > 1) {
+    state.step--;
+    renderStep();
+  }
 });
 
 btnNext.addEventListener('click', async () => {
@@ -355,10 +346,12 @@ btnNext.addEventListener('click', async () => {
     await submitBooking();
     return;
   }
-  if (state.step < 4) { state.step++; renderStep(); }
+  if (state.step < 4) {
+    state.step++;
+    renderStep();
+  }
 });
 
-// ---------- Krok 3: sloty ----------
 async function loadSlots() {
   const container = document.getElementById('slots-container');
   container.innerHTML = '<div class="empty-msg"><span class="spinner"></span>Sprawdzanie wolnych terminów…</div>';
@@ -401,13 +394,11 @@ function renderSlots(slots) {
   });
 }
 
-// ---------- Krok 4: wysyłka ----------
 function goToStep4Summary() {
   const s = state.slot;
   const label = TYPE_LABELS[state.type];
   const what = state.type === 'Grupowe' ? s.name : label;
-  document.getElementById('summary-box').textContent =
-    what + ' — ' + state.date + ', ' + s.start + '–' + s.end;
+  document.getElementById('summary-box').textContent = what + ' — ' + state.date + ', ' + s.start + '–' + s.end;
 }
 
 async function submitBooking() {
@@ -415,7 +406,7 @@ async function submitBooking() {
   const tel = document.getElementById('f-tel').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const uwagi = document.getElementById('f-uwagi').value.trim();
-  const website = document.getElementById('f-website').value; // honeypot
+  const website = document.getElementById('f-website').value;
   const zgoda = document.getElementById('f-zgoda').checked;
   const msgBox = document.getElementById('result-msg');
 
@@ -439,14 +430,20 @@ async function submitBooking() {
     start: state.slot.start,
     end: state.slot.end,
     name: state.type === 'Grupowe' ? state.slot.name : undefined,
-    imie, telefon: tel, email, uwagi, website,
+    imie,
+    telefon: tel,
+    email,
+    uwagi,
+    website
   };
 
   try {
     const res = await fetch(CONFIG.API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // unika CORS preflight dla Apps Script
-      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
     });
     const data = await res.json();
     if (data.success) {
@@ -474,16 +471,14 @@ renderStep = function() {
   if (state.step === 4 && state.slot) goToStep4Summary();
 };
 
-// ---------- Tabela grafiku (sekcja "Grafik") ----------
 async function loadWeekOverview() {
-  const statusEl = document.getElementById('schedule-status');
   const body = document.getElementById('schedule-body');
   try {
     const res = await fetch(CONFIG.API_URL + '?action=week_overview');
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
-    const order = ['Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'];
-    const rows = (data.grupowe || []).slice().sort((a,b) => {
+    const order = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+    const rows = (data.grupowe || []).slice().sort((a, b) => {
       const da = order.indexOf(a.Dzien_tygodnia), db = order.indexOf(b.Dzien_tygodnia);
       if (da !== db) return da - db;
       return String(a.Godzina_start).localeCompare(String(b.Godzina_start));
@@ -493,10 +488,10 @@ async function loadWeekOverview() {
       return;
     }
     body.innerHTML = rows.map(r =>
-      '<tr><td>' + r.Dzien_tygodnia + '</td><td>' + r.Godzina_start + '–' + r.Godzina_koniec + '</td><td>' + r.Nazwa_zajec + '</td><td>' + (r.Trener||'') + '</td><td>' + (r.Limit_miejsc||'') + ' os.</td></tr>'
+      '<tr><td>' + r.Dzien_tygodnia + '</td><td>' + r.Godzina_start + '–' + r.Godzina_koniec + '</td><td>' + r.Nazwa_zajec + '</td><td>' + (r.Trener || '') + '</td><td>' + (r.Limit_miejsc || '') + ' os.</td></tr>'
     ).join('');
   } catch (err) {
-    body.innerHTML = '<tr><td colspan="5" class="empty-msg">Grafik pojawi się po skonfigurowaniu systemu (patrz instrukcja wdrożenia).</td></tr>';
+    body.innerHTML = '<tr><td colspan="5" class="empty-msg">Grafik pojawi się po skonfigurowaniu systemu.</td></tr>';
   }
 }
 
@@ -506,7 +501,6 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// ---------- Start ----------
 renderStep();
 loadWeekOverview();
 </script>
